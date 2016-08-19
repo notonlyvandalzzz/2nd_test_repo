@@ -10,9 +10,7 @@ def get_db
   return @db
 end
 
-configure do
-  enable :sessions
-end
+
 
 helpers do
   def username
@@ -30,6 +28,15 @@ before '/secure/*' do
     @error = 'Sorry, you need to be logged in to visit ' + request.path
     halt erb(:login_form)
   end
+end
+
+configure do
+  enable :sessions
+  @db.execute 'CREATE TABLE IF NOT EXISTS Posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created_date DATE,
+  posttext TEXT
+  )'
 end
 
 get '/' do
