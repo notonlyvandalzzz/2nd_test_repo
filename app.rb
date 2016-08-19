@@ -3,6 +3,13 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+
+def get_db
+  @db = SQLite3::Database.new 'lepra.db'
+  @db.results_as_hash = true
+  return @db
+end
+
 configure do
   enable :sessions
 end
@@ -11,6 +18,10 @@ helpers do
   def username
     session[:identity] ? session[:identity] : 'Hello stranger'
   end
+end
+
+before do
+  get_db
 end
 
 before '/secure/*' do
