@@ -32,6 +32,13 @@ get '/new' do
   erb :new
 end
 
+post '/new' do
+  @posttext = params[:posttext]
+
+  erb "You post: #{posttext}"
+end
+
+
 post '/login/attempt' do
   if params['username'] == 'admin' && params['passwd'] == 'mypass'
     session[:identity] = params['username']
