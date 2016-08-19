@@ -54,8 +54,11 @@ end
 
 post '/new' do
   @posttext = params[:posttext]
-
-  erb "You post: #{@posttext}"
+  if @posttext.size <= 0 
+    @error = "Post text can't be empty"
+    return erb :new
+  end
+  erb "Your post: #{@posttext}"
 end
 
 
