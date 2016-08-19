@@ -29,7 +29,7 @@ get '/login/form' do
 end
 
 get '/new' do
-  erb 'Hello'
+  erb :new
 end
 
 post '/login/attempt' do
