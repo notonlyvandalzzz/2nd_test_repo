@@ -28,6 +28,10 @@ get '/login/form' do
   erb :login_form
 end
 
+get '/new' do
+  erb 'Hello'
+end
+
 post '/login/attempt' do
   if params['username'] == 'admin' && params['passwd'] == 'mypass'
     session[:identity] = params['username']
