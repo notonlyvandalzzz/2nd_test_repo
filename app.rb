@@ -58,6 +58,7 @@ post '/new' do
     @error = "Post text can't be empty"
     return erb :new
   end
+  @db.execute 'insert into Posts (posttext, created_date) values (?, datetime())',[@posttext]
   erb "Your post: #{@posttext}"
 end
 
