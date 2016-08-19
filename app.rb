@@ -35,7 +35,7 @@ end
 post '/new' do
   @posttext = params[:posttext]
 
-  erb "You post: #{posttext}"
+  erb "You post: #{@posttext}"
 end
 
 
