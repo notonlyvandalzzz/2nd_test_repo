@@ -1,11 +1,11 @@
 <h4>Post details:</h4>
 <%@currpost.each do |row| %>
-	<div class="form-group"><p><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%></label></small>
+	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%></label></small>
 	<div class="col-sm-9">
 	<%=row['posttext']%>
 	</div>
-	</p></div>
-	<hr />
+	</div>
+	<br /><hr />
 <br />
 <div class="form-group"><h4>Comments</h4></div>
 <br />
