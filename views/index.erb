@@ -1,6 +1,6 @@
 <h2>Latest posts</h2><hr />
 <%@newposts.each do |row| %>
-	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%><br />by <%=row['author'] == nil ? 'Anonymous' : row['author']%></label></small>
+	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%><br />by <%=row['author'] == nil || comm['author'] == '' ? 'Anonymous' : row['author']%></label></small>
 	<div class="col-sm-9">
 	<p><%=row['posttext']%></p>
 		<p class="text-right"><a href="/comms/<%=row['id']%>">Comments: <%=row['commnum']%></a></p>
