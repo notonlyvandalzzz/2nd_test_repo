@@ -41,6 +41,7 @@ configure do
 end
 
 get '/' do
+  @newposts = db.execute 'select * from Posts order bo id desc'
   erb :index
 end
 
