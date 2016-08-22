@@ -1,6 +1,7 @@
 <h2>Latest posts</h2>
 <%@newposts.each do |row| %>
-	<div class="col-sm-8">
+	<label for="PostDate" class="col-sm-2 control-label"><%=row['created_date']%></label>
+	<div class="col-sm-9">
 	<p><%=row['posttext']%></p>
 	<hr /></div>
 <%end%>
