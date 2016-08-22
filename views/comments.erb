@@ -1,0 +1,8 @@
+<h4>Post details:</h4>
+<%@currpost.each do |row| %>
+	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%></label></small>
+	<div class="col-sm-9">
+	<p><%=row['posttext']%></p>
+	<hr />
+	</div>
+<%end%>
