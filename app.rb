@@ -85,3 +85,8 @@ get '/secure/place' do
   erb 'This is a secret place that only <%=session[:identity]%> has access to!'
   erb :secret_area
 end
+
+get '/comms/:id' do
+    post_id = params[:id]
+    erb "Comments for post with id #{post_id}"
+end
