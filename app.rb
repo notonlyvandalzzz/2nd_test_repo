@@ -60,7 +60,8 @@ post '/new' do
     return erb :new
   end
   @db.execute 'insert into Posts (posttext, created_date) values (?, datetime())',[@posttext]
-  erb "Your post: #{@posttext}"
+  #erb "Your post: #{@posttext}"
+  redirect to '/'
 end
 
 
