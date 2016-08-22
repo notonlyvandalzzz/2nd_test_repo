@@ -90,3 +90,4 @@ get '/comms/:id' do
     post_id = params[:id]
     @currpost = @db.execute 'select * from Posts where id=?', [post_id]
     erb :comments
+end
