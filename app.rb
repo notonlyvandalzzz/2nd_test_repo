@@ -47,7 +47,8 @@ configure do
 end
 
 get '/' do
-  @newposts = @db.execute 'select * from Posts order by id desc'
+  #@newposts = @db.execute 'select * from Posts order by id desc'
+  @newposts = @db.execute 'select Posts.id, Posts.posttext, ifnull(count(Comms.pid), 0) as commnum from Posts left join Comms on Posts.id = Comms.pid group by Posts.id order by Posts.id'
   erb :index
 end
 

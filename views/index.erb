@@ -3,7 +3,7 @@
 	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%></label></small>
 	<div class="col-sm-9">
 	<p><%=row['posttext']%></p>
-		<p class="text-right"><a href="/comms/<%=row['id']%>">Comments</a></p>
+		<p class="text-right"><a href="/comms/<%=row['id']%>">Comments: <%=row['commnum']%></a></p>
 		<hr />
 	</div>
 <%end%>
