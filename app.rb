@@ -38,6 +38,12 @@ configure do
   created_date DATE,
   posttext TEXT
   )'
+  @db.execute 'CREATE TABLE IF NOT EXISTS Comms (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  pid INTEGER,
+  created_date DATE,
+  commtext TEXT
+  )'
 end
 
 get '/' do
@@ -90,4 +96,12 @@ get '/comms/:id' do
     post_id = params[:id]
     @currpost = @db.execute 'select * from Posts where id=?', [post_id]
     erb :comments
+end
+
+post '/comms/:id' do
+    post_id = params[:id]
+    commtext = params[:commtext]
+
+    @db.execute 'insert into Comms (pid, commtext, created_date) values (?, ?, datetime())',[post_id, commtext]
+    redirect to "/comms/#{post_id}"
 end
