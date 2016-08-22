@@ -62,11 +62,12 @@ end
 
 post '/new' do
   @posttext = params[:posttext]
+  author = params[:author]
   if @posttext.size <= 0 
     @error = "Post text can't be empty"
     return erb :new
   end
-  @db.execute 'insert into Posts (posttext, created_date) values (?, datetime())',[@posttext]
+  @db.execute 'insert into Posts (posttext, author, created_date) values (?, ?, datetime())',[@posttext, author]
   #erb "Your post: #{@posttext}"
   redirect to '/'
 end
@@ -103,7 +104,7 @@ end
 post '/comms/:id' do
     post_id = params[:id]
     commtext = params[:commtext]
-
-    @db.execute 'insert into Comms (pid, commtext, created_date) values (?, ?, datetime())',[post_id, commtext]
+    author = params[:author]
+    @db.execute 'insert into Comms (pid, commtext, author, created_date) values (?, ?, ?, datetime())',[post_id, commtext, author]
     redirect to "/comms/#{post_id}"
 end
