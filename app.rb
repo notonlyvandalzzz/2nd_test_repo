@@ -4,14 +4,14 @@ require 'sinatra/reloader'
 require 'sqlite3'
 require 'sinatra/activerecord'
 
-set :database, "sqlite3:lepranew.db"
+set :database, "sqlite3:lepranew2.db"
 
-class Posts < ActiveRecord::Base
+class Post < ActiveRecord::Base
   has_many :comments
 end
 
-class Comments < ActiveRecord::Base
-  belongs_to :posts
+class Comment < ActiveRecord::Base
+  belongs_to :post
 end
 
   # 365  git add Rakefile     - 2) создаем файл 
