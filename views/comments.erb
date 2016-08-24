@@ -1,29 +1,27 @@
 <h4>Post details:</h4>
-<%@currpost.each do |row| %>
-	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%></label></small>
+	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=c_post.created_at%><br />by <%=c_post.author == nil || c_post.author == '' ? 'Anonymous' : c_post.author%></label></small>
 	<div class="col-sm-9">
-	<%=row['posttext']%>
+	<%=c_post.content%>
 	</div>
 	</div>
 	<br /><hr />
 <div class="form-group"><h4>Comments:</h4></div>
-<%@allcomments.each do |comm| %>
-	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=comm['created_date']%><br />by <%=comm['author'] == nil || comm['author'] == '' ? 'Anonymous' : comm['author']%></label></small>
+<%@cmnts.each do |comm| %>
+	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=comm.created_at%><br />by <%=comm.cauthor == nil || comm.cauthor == '' ? 'Anonymous' : comm.cauthor%></label></small>
 	<div class="col-sm-9">
-	<p><%=comm['commtext']%></p>
+	<p><%=comm.commtext%></p>
 		<hr />
 	</div>
 <%end%>
 <div class="form-group">
-	<form role=form" action="/comms/<%=row['id']%>" method="POST">
+	<form role=form" action="/comms/<%=c_post.id%>" method="POST">
 		<div class="col-sm-8 col-sm-offset-3">
-		<textarea class="form-control" rows="5" placeholder="Type comment here" name="commtext"></textarea>
+		<textarea class="form-control" rows="5" placeholder="Type comment here" name="comments[commtext]"></textarea>
 		<br />
 		<div class="col-xs-3">
-  		<input type="text" class="form-control" name="author" id="nickname" placeholder="Your name"></div>
+  		<input type="text" class="form-control" name="comments[cauthor]" id="nickname" placeholder="Your name"></div>
   		<div class="col-xs-2"><button type="submit" class="btn btn-primary">Post comment</button></div>
   		</div>
 	</form>
 	</div>
 
-<%end%>
