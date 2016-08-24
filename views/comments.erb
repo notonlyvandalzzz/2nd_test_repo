@@ -1,5 +1,5 @@
 <h4>Post details:</h4>
-	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=c_post.created_at%><br />by <%=c_post.author == nil || @c_post.author == '' ? 'Anonymous' : c_post.author%></label></small>
+	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=@c_post.created_at%><br />by <%=@c_post.author == nil || @c_post.author == '' ? 'Anonymous' : @c_post.author%></label></small>
 	<div class="col-sm-9">
 	<%=@c_post.content%>
 	</div>
