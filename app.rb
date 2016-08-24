@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
+require 'sinatra/activerecord'
 
 set :database, "sqlite3:lepranew.db"
 
