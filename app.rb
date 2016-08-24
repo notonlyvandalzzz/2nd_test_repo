@@ -38,7 +38,8 @@ end
 
 before do
   # @newposts = Posts.left_outer_joins(:comments).distinct.select('posts.*, ifnull(count(comments.post_id), 0) as commnum').group('posts.id')
-  @newposts = Post.order "created_at DESC"
+  #@newposts = Post.order "created_at DESC"
+  @newposts = Post.left_outer_joins(:comments).select('posts.*, ifnull(count(comments.post_id), 0) as commnum').group('posts.id').order('created_at desc')
 end
 
 before '/secure/*' do
