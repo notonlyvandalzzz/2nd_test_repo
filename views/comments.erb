@@ -1,7 +1,7 @@
 <h4>Post details:</h4>
-	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=c_post.created_at%><br />by <%=c_post.author == nil || c_post.author == '' ? 'Anonymous' : c_post.author%></label></small>
+	<div class="form-group"><small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=c_post.created_at%><br />by <%=c_post.author == nil || @c_post.author == '' ? 'Anonymous' : c_post.author%></label></small>
 	<div class="col-sm-9">
-	<%=c_post.content%>
+	<%=@c_post.content%>
 	</div>
 	</div>
 	<br /><hr />
@@ -14,7 +14,7 @@
 	</div>
 <%end%>
 <div class="form-group">
-	<form role=form" action="/comms/<%=c_post.id%>" method="POST">
+	<form role=form" action="/comms/<%=@c_post.id%>" method="POST">
 		<div class="col-sm-8 col-sm-offset-3">
 		<textarea class="form-control" rows="5" placeholder="Type comment here" name="comments[commtext]"></textarea>
 		<br />
