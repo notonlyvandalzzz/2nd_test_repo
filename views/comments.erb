@@ -19,6 +19,7 @@
 		<textarea class="form-control" rows="5" placeholder="Type comment here" name="comments[commtext]"></textarea>
 		<br />
 		<div class="col-xs-3">
+		<input type="hidden" name="comments[posts_id]" value="<%=@c_post.id%>">
   		<input type="text" class="form-control" name="comments[cauthor]" id="nickname" placeholder="Your name"></div>
   		<div class="col-xs-2"><button type="submit" class="btn btn-primary">Post comment</button></div>
   		</div>

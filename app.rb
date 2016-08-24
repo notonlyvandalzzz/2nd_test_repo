@@ -129,9 +129,16 @@ get '/comms/:id' do
 end
 
 post '/comms/:id' do
-    post_id = params[:id]
-    commtext = params[:commtext]
-    author = params[:author]
-    @db.execute 'insert into Comms (pid, commtext, author, created_date) values (?, ?, ?, datetime())',[post_id, commtext, author]
-    redirect to "/comms/#{post_id}"
+    # post_id = params[:id]
+    # commtext = params[:commtext]
+    # author = params[:author]
+    # @db.execute 'insert into Comms (pid, commtext, author, created_date) values (?, ?, ?, datetime())',[post_id, commtext, author]
+    # redirect to "/comms/#{post_id}"
+    @com_new = Comments.new params[:comments]
+    if @com_new.save
+    redirect to '/'
+  else
+    @error = "Error somewhere: " + @com_new.errors.full_messages.first
+    erb :new
+  end
 end
