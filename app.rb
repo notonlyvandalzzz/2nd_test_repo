@@ -3,14 +3,31 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+set :database, "sqlite3:lepranew.db"
 
-def get_db
-  @db = SQLite3::Database.new 'lepra.db'
-  @db.results_as_hash = true
-  return @db
+class Posts < ActiveRecord::Base
+  has_many :comments
 end
 
+class Comment < ActiveRecord::Base
+  belongs_to :posts
+end
 
+  # 365  git add Rakefile 
+  # 366  git commit -M "Rakefile add"
+  # 367  git commit -m "Rakefile add"
+  # 368  git push
+  # 369  ls -las
+  # 370  rake -T
+  # 371  tux
+  # 372  rake db:create_migration NAME=create_clients
+  # 373  cat db/migrate/20160822232920_create_clients.rb
+  # 374  git status
+  # 375  git add db/migrate/20160822232920_create_clients.rb
+  # 376  git commit -m "Migration create"
+  # 377  git push
+  # 378  git pull
+  # 379  rake db:migrate
 
 helpers do
   def username
