@@ -37,7 +37,8 @@ helpers do
 end
 
 before do
-  @newposts = Posts.left_outer_joins(:comments).distinct.select('posts.*, ifnull(count(comments.post_id), 0) as commnum').group('posts.id')
+  # @newposts = Posts.left_outer_joins(:comments).distinct.select('posts.*, ifnull(count(comments.post_id), 0) as commnum').group('posts.id')
+  @newposts = Posts.order "created_at DESC"
 end
 
 before '/secure/*' do
@@ -79,15 +80,21 @@ get '/new' do
 end
 
 post '/new' do
-  @posttext = params[:posttext]
-  author = params[:author]
-  if @posttext.size <= 0 
-    @error = "Post text can't be empty"
-    return erb :new
+  # @posttext = params[:posttext]
+  # author = params[:author]
+  # if @posttext.size <= 0 
+  #   @error = "Post text can't be empty"
+  #   return erb :new
+  # end
+  # @db.execute 'insert into Posts (posttext, author, created_date) values (?, ?, datetime())',[@posttext, author]
+  # #erb "Your post: #{@posttext}"
+  @p_new = Posts.new params[:posts]
+  if @p_new.save
+    redirect to '/'
+  else
+    @error = "Error somewhere: " + @p_new.errors.full_messages.first
+    erb :new
   end
-  @db.execute 'insert into Posts (posttext, author, created_date) values (?, ?, datetime())',[@posttext, author]
-  #erb "Your post: #{@posttext}"
-  redirect to '/'
 end
 
 
