@@ -10,9 +10,9 @@ class Post < ActiveRecord::Base
   has_many :comments
 end
 
-class Comment < ActiveRecord::Base
-  belongs_to :post
-end
+# class Comment < ActiveRecord::Base
+#   belongs_to :post
+# end
 
   # 365  git add Rakefile     - 2) создаем файл 
   # 366  git commit -M "Rakefile add"
