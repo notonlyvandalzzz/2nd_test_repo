@@ -37,7 +37,7 @@ helpers do
 end
 
 before do
-  get_db
+  # get_db
 end
 
 before '/secure/*' do
@@ -50,18 +50,18 @@ end
 
 configure do
   enable :sessions
-  get_db
-  @db.execute 'CREATE TABLE IF NOT EXISTS Posts (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  created_date DATE,
-  posttext TEXT
-  )'
-  @db.execute 'CREATE TABLE IF NOT EXISTS Comms (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  pid INTEGER,
-  created_date DATE,
-  commtext TEXT
-  )'
+  # get_db
+  # @db.execute 'CREATE TABLE IF NOT EXISTS Posts (
+  # id INTEGER PRIMARY KEY AUTOINCREMENT,
+  # created_date DATE,
+  # posttext TEXT
+  # )'
+  # @db.execute 'CREATE TABLE IF NOT EXISTS Comms (
+  # id INTEGER PRIMARY KEY AUTOINCREMENT,
+  # pid INTEGER,
+  # created_date DATE,
+  # commtext TEXT
+  # )'
 end
 
 get '/' do
