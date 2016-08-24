@@ -38,7 +38,7 @@ end
 
 before do
   # @newposts = Posts.left_outer_joins(:comments).distinct.select('posts.*, ifnull(count(comments.post_id), 0) as commnum').group('posts.id')
-  @newposts = Posts.order "created_at DESC"
+  @newposts = Post.order "created_at DESC"
 end
 
 before '/secure/*' do
@@ -88,7 +88,7 @@ post '/new' do
   # end
   # @db.execute 'insert into Posts (posttext, author, created_date) values (?, ?, datetime())',[@posttext, author]
   # #erb "Your post: #{@posttext}"
-  @p_new = Posts.new params[:posts]
+  @p_new = Post.new params[:posts]
   if @p_new.save
     redirect to '/'
   else
@@ -134,7 +134,7 @@ post '/comms/:id' do
     # author = params[:author]
     # @db.execute 'insert into Comms (pid, commtext, author, created_date) values (?, ?, ?, datetime())',[post_id, commtext, author]
     # redirect to "/comms/#{post_id}"
-    @com_new = Comments.new params[:comments]
+    @com_new = Comment.new params[:comments]
     if @com_new.save
     redirect to '/'
   else
