@@ -123,7 +123,7 @@ get '/comms/:id' do
     # post_id = params[:id]
     # @currpost = @db.execute 'select * from Posts where id=?', [post_id]
     # @allcomments = @db.execute 'select * from Comms where pid=? order by id desc', [post_id]
-    @c_post = Posts.find(params[:id])
+    @c_post = Post.find(params[:id])
     @cmnts = @c_post.comments
     erb :comments
 end
