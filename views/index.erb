@@ -1,9 +1,9 @@
 <h2>Latest posts</h2><hr />
-<%@newposts.each do |row| %>
-	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=row['created_date']%><br />by <%=row['author'] == nil || comm['author'] == '' ? 'Anonymous' : row['author']%></label></small>
+<%@newposts.each do |post| %>
+	<small><label for="PostDate" class="col-sm-2 control-label">Added at<br /><%=post.%><br />by <%=post.author == nil || postauthor == '' ? 'Anonymous' : post.author%></label></small>
 	<div class="col-sm-9">
-	<p><%=row['posttext']%></p>
-		<p class="text-right"><a href="/comms/<%=row['id']%>">Comments: <%=row['commnum']%></a></p>
+	<p><%=post.content%></p>
+		<p class="text-right"><a href="/comms/<%=post.id%>">Comments: <%=post.commnum%></a></p>
 		<hr />
 	</div>
 <%end%>

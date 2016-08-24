@@ -10,7 +10,7 @@ class Posts < ActiveRecord::Base
   has_many :comments
 end
 
-class Comment < ActiveRecord::Base
+class Comments < ActiveRecord::Base
   belongs_to :posts
 end
 
@@ -37,7 +37,7 @@ helpers do
 end
 
 before do
-  # get_db
+  @newposts = Posts.left_outer_joins(:comments).distinct.select('posts.*, ifnull(count(comments.post_id), 0) as commnum').group('posts.id')
 end
 
 before '/secure/*' do
@@ -66,7 +66,7 @@ end
 
 get '/' do
   #@newposts = @db.execute 'select * from Posts order by id desc'
-  @newposts = @db.execute 'select Posts.id, Posts.posttext, Posts.author, Posts.created_date, ifnull(count(Comms.pid), 0) as commnum from Posts left join Comms on Posts.id = Comms.pid group by Posts.id order by Posts.id desc'
+  # @newposts = @db.execute 'select Posts.id, Posts.posttext, Posts.author, Posts.created_date, ifnull(count(Comms.pid), 0) as commnum from Posts left join Comms on Posts.id = Comms.pid group by Posts.id order by Posts.id desc'
   erb :index
 end
 
